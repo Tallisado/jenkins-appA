@@ -1,6 +1,8 @@
 #!groovy
 
+// /home/jenkins/.m2/repository/org/jfrog/test/multi/2.20-SNAPSHOT/multi-2.20-SNAPSHOT.pom
 node {
+   properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
    stage("Checkout"){
         // Checkout code from repository
         echo "setting properties"
