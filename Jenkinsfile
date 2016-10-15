@@ -1,6 +1,6 @@
 #!groovy
 
-node {
+dockerNode {
    stage("Checkout"){
         // Checkout code from repository
         echo "setting properties"
