@@ -20,7 +20,23 @@
 //    }
 // }
 
-dockerNode(image: "maven:3.3.3-jdk-8", sideContainers: ["selenium/standalone-firefox"]) {
-  git "https://github.com/wakaleo/game-of-life"
-  sh 'mvn clean test'
+dockerNode(image: "maven:3.3.3-jdk-8") {
+  stage("Checkout"){
+    checkout scm
+  }
+  stage("Acceptance Testing"){
+    sh 'mvn clean test'
+  }
+  stage("Deploy"){
+    sh 'mvn clean install'
+  }
 }
+//
+// dockerNode(image: "maven:3.3.3-jdk-8", sideContainers: ["selenium/standalone-firefox"]) {
+//   stage("Checkout"){
+//     checkout scm
+//   }
+//   stage("Acceptance Testing"){
+//     sh 'mvn clean test'
+//   }
+// }
