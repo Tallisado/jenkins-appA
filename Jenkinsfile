@@ -1,4 +1,5 @@
 #!groovy
+
 node {
    stage("Checkout"){
         // Checkout code from repository
